@@ -17,6 +17,7 @@ System.out.println(three.toString());
 a.createAlpha(two);
 a.comp();
 System.out.println(a.getAlpha().toString());
+a.sort();
 	}
 
 }

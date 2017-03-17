@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 import task2.Student;
 
@@ -42,7 +43,7 @@ public class Frequency {
 				char[] b = new char[0];
 				b = text.toCharArray();
 				for (int i = 0; i < b.length; i++) {
-					Letter temp=new Letter(b[i]);
+					Letter temp = new Letter(b[i]);
 					list.add(temp);
 				}
 
@@ -63,12 +64,24 @@ public class Frequency {
 			int temp = 0;
 			Iterator<Letter> itr = list.iterator();
 			for (; itr.hasNext();) {
-				if (itr.next().equals(alpha.getArray()[i].getLetter())) {
+				if (Character.toLowerCase(itr.next().getLetter()) == (alpha.getArray()[i].getLetter())) {
 					temp++;
 
 				}
 			}
 			alpha.getArray()[i].setFrequency(temp);
+		}
+	}
+
+	public void sort() {
+		TreeSet<Letter> ts = new TreeSet<Letter>(new LetterComparator());
+		for (int i = 0; i < alpha.getArray().length; i++) {
+			ts.add(alpha.getArray()[i]);
+		}
+
+		Iterator<Letter> itr = ts.iterator();
+		for (; itr.hasNext();) {
+			System.out.println(itr.next());
 		}
 	}
 }
